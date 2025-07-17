@@ -1,0 +1,47 @@
+{% extends 'main.html' %}
+
+{% block title %}Profile - {{profile.user.username}} {% endblock %}
+
+{% block content %}
+<div class="profile-container">
+    <div class="panels">
+        <div>
+            <div class="info">
+                <img src="{{profile.avatar.url}}" alt="{{profile.user.username}}">
+                <h2>@{{profile.user.username.capitalize}}</h2>
+                <p>{{profile.user.first_name}} {{profile.user.last_name}}</p>
+                <p>{{profile.user.email}}</p>
+                {% if profile.user == request.user %}
+                <a href="{% url 'account:profile_edit' %}" class="btn btn-main btn-round">Edit profile</a>
+                {% endif %}
+                {% if profile.user != request.user and not is_friend %}
+                <a href="{% url 'account:add_friend' profile.slug %}" class="btn btn-round btn-success">Add friend</a>
+                {% endif %}
+                {% if is_friend %}
+                <a href="{% url 'chat:chat_user' profile.slug %}" class="btn btn-main btn-round">Chat</a>
+                <a href="{% url 'account:add_friend' profile.slug %}" class="btn btn-round btn-danger">Remove friend</a>
+                {% endif %}
+                
+            </div>
+            <div class="visits">
+                {% include 'includes/visits.html' %}
+            </div>
+        </div>
+        <div class="side-panel">
+            <div>
+                <h2>Stats</h2>
+                <div>
+                    <p>World porcentage: {{world_percentage|floatformat:0}}%</p>
+                    <p>Countries visited: {{countries_visited}}</p>
+                </div>
+            </div>
+            <div class="friends">
+                {% include 'includes/friends.html' %}
+            </div>
+            <div class="chats">
+                {% include 'includes/chats.html' %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

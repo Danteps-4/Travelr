@@ -1,0 +1,723 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap');
+
+:root {
+    --color-main-light: #e1f6fb;
+    --color-dark: #1e375a;
+    --color-dark-medium: #51546e;
+    --color-dark-light: #61738b;
+    --color-light: #e5e5e5;
+    --color-gray: #8b8b8b;
+    --color-light-gray: #b2bdbd;
+    --color-bg: #e7f0fa;
+    --color-success: #5dd693;
+    --color-success-dark: #4ebb7f;
+    --color-error: #fc4b0b;
+    --color-error-dark: #ce4311;
+    --color-info: #71c6dd;
+    --color-info-dark: #5aa9be;
+  }
+
+* {
+    font-family: "Lato", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-rendering: optimizeLegibility;
+    /* color: inherit; */
+    font-size: inherit;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    line-height: 1.6;
+    font-weight: 400;
+    font-size: 1.5rem;
+    color: var(--color-dark);
+    background-color: var(--color-bg);
+    min-height: 100vh;
+}
+
+img {
+    width: 100%;
+  }
+  
+a {
+    display: inline-block;
+    color: var(--color-dark);
+    text-decoration: none;
+}
+
+h1 {
+    font-size: 6.5rem;
+}
+
+h2 {
+    font-size: 4rem;
+}
+
+p{
+    font-size: 1.8rem;
+}
+
+h3{
+    font-size: 3rem;
+}
+.container {
+    max-width: 120rem;
+    width: 90%;
+    margin: auto;
+}
+
+.btn {
+    background-color: transparent;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    transition: all ease-in-out 0.3s;
+    padding: .5rem 1rem;
+    font-weight: 700;
+}
+
+.btn-round {
+    border-radius: 1.2rem;
+    padding: .8rem 1.5rem;
+    margin: 1rem 0;
+    font-weight: 700;
+    transition: all ease-in-out 0.3s;
+}
+
+.btn-main {
+    color: var(--color-light);
+    background-color: var(--color-dark-medium);
+}
+.btn-main:hover {
+    background-color: var(--color-dark-light);
+}
+
+.btn-danger {
+    background-color: var(--color-error);
+    color: var(--color-light);
+}
+.btn-danger:hover {
+    background-color: var(--color-error-dark);
+}
+
+.btn-info {
+    background-color: var(--color-info);
+    color: var(--color-light);
+}
+.btn-info:hover{
+    background-color: var(--color-info-dark);
+}
+.btn-success {
+    background-color: var(--color-success);
+    color: var(--color-light);
+}
+.btn-success:hover{
+    background-color: var(--color-success-dark);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.avatar {
+    position: relative;
+    display: inline-block;
+    border-radius: 50%;
+    border: 2px solid var(--color-main);
+}
+
+.error {
+    background-color: var(--color-error);
+    border-radius: 6rem;
+    padding: .7rem;
+    margin: .5rem;
+    text-align: center;
+}
+
+#country-map {
+    height: 22rem;
+}
+
+#visualize-map {
+    height: 50rem;
+}
+
+ /* Wrapper */
+ .wrapper {
+    display: flex;
+    overflow-x: auto; /* Activa el scroll horizontal */
+    white-space: nowrap; /* Evita el salto de línea */
+    gap: 15px; /* Espaciado entre elementos */
+    padding-bottom: 10px; /* Espacio para evitar recortes */
+    scrollbar-width: thin; /* Hace más delgado el scrollbar en Firefox */
+}
+
+.wrapper::-webkit-scrollbar {
+    height: 8px; /* Altura del scrollbar en Chrome/Safari */
+}
+
+.wrapper::-webkit-scrollbar-thumb {
+    background: gray; /* Color del "pulgar" del scrollbar */
+    border-radius: 4px;
+}
+
+.item {
+    min-width: 150px; /* Tamaño mínimo de cada país */
+    flex: 0 0 auto; /* Evita que los elementos se reduzcan */
+    text-align: center;
+}
+
+.image-container {
+    width: 28rem; /* Ancho fijo */
+    height: 35rem; /* Alto mayor que el ancho */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Oculta lo que sobresalga */
+    background-color: #f0f0f0; /* Opcional: fondo para cuando la imagen no carga */
+    border-radius: 8px; /* Bordes redondeados */
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out; /* Efecto suave */
+}
+
+.image-container:hover img {
+    transform: scale(1.1); /* Aumenta el tamaño un 20% */
+}
+
+
+/* ----Navbar---- */
+.navbar {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    background-color: var(--color-dark-light);
+    padding: 1.5rem 5rem;
+}
+
+.navbar a:hover {
+    color: var(--color-bg);
+}
+
+.navbar .logo a {
+    font-size: 3rem;
+}
+
+.navbar .search-form {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .search-form .input-box {
+    width: 100%;
+}
+.navbar .search-form .input-box input {
+    height: 3rem;
+    width: 100%;
+    outline: none;
+    border: 1px solid #fff;
+    border-radius: 1rem;
+    padding: 0 1rem;
+}
+.navbar .links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5rem;
+}
+
+.navbar .profile-links {
+    display: flex;
+    align-items: center;
+}
+.navbar .links .profile-links img {
+    height: 4.5rem;
+    width: 4.5rem;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.profile-dropdown-container {
+        position: relative; /* Necesario para posicionar el menú desplegable */
+        display: inline-block; /* O 'block' según tu layout */
+    }
+
+.profile-trigger {
+    display: flex; /* Para alinear imagen, nombre y flecha */
+    align-items: center;
+    text-decoration: none;
+    /* Hereda estilos de .btn o define específicos */
+    /* color: #333; */
+    /* padding: 8px 12px; */
+    /* border-radius: 4px; */
+    cursor: pointer;
+}
+
+.profile-avatar-img {
+    width: 24px; /* Ajusta según tu diseño */
+    height: 24px; /* Ajusta según tu diseño */
+    border-radius: 50%;
+    margin-right: 8px;
+    object-fit: cover;
+}
+
+.dropdown-arrow {
+    margin-left: 8px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.profile-trigger.active .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+/* Estilos para el menú desplegable */
+.dropdown-menu {
+    display: none; /* Oculto por defecto */
+    position: absolute;
+    top: calc(100% + 5px); /* Debajo del trigger, con un pequeño espacio */
+    right: 0; /* Alineado a la derecha del contenedor */
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    min-width: 180px; /* Ancho mínimo del desplegable */
+    z-index: 1000; /* Asegura que esté sobre otros elementos */
+    padding: 8px 0; /* Espaciado interno vertical */
+}
+
+.dropdown-menu.active {
+    display: block; /* Visible cuando tiene la clase 'active' */
+}
+
+.dropdown-item {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.dropdown-item:hover {
+    background-color: var(--color-dark-light);
+}
+
+.dropdown-divider {
+    height: 1px;
+    background-color: #eee;
+    margin: 8px 0;
+}
+
+/* ----Login Signup---- */
+.form-box {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 44rem;
+    padding: 3rem;
+}
+.form-header {
+    text-align: center;
+    margin: 2rem 0 4rem 0;
+}
+.form-header header {
+    font-size: 3rem;
+    font-weight: 700;
+}
+.input-box .input-field {
+    width: 100%;
+    height: 6rem;
+    font-size: 1.7rem;
+    padding: 0 2.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 3rem;
+    border: none;
+    box-shadow: 0px 5px 10px 1px rgba(0,0,0, 0.05);
+    outline: none;
+    transition: .3s;
+}
+::placeholder {
+    font-weight: 500;
+}
+.forgot {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4rem;
+}
+.forgot section {
+    display: flex;
+    align-items: center;
+    font-size: 1.4rem;
+}
+#check{
+    margin-right: 1rem;
+}
+.form-box a{
+    text-decoration: none;
+}
+.form-box a:hover {
+    text-decoration: underline;
+}
+.input-submit {
+    position: relative;
+}
+.input-submit .submit-btn {
+    width: 100%;
+    height: 6rem;
+    background-color: var(--color-dark-light);
+    border: none;
+    border-radius: 3rem;
+    cursor: pointer;
+    transition: .3s;
+}
+.input-submit .submit-btn:hover {
+    background-color: var(--color-dark);
+    transform: scale(1.05, 1);
+}
+.input-submit label{
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    color: var(--color-light);
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+}
+.login-signup-link {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-top: 2rem;
+}
+.login-signup-link a{
+    font-weight: 700;
+}
+
+/* ----Home---- */
+
+.home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    height: 80vh;
+}
+
+.home a {
+    text-decoration: underline;
+    color: var(--color-dark-medium);
+}
+
+/* -------EXPLORE-------- */
+/* Country */
+.country-container .name {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.country-container .content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    height: auto;
+}
+
+/* --------CORE-------- */
+/* Include:visits */
+.visit-card {
+    display: flex;
+    flex-direction: column;
+    margin: 2rem 0;
+    background-color: var(--color-dark-medium);
+    border-radius: 3rem;
+    padding: 1rem 2rem;
+    color: var(--color-light);
+}
+.visit-card .top-section {
+    display: flex;
+    justify-content: space-between;
+}
+
+.visit-card .top-section a {
+    color: var(--color-light);
+}
+
+/* --------ACCOUNT-------- */
+/* Profile_view */
+.profile-container .panels {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 5rem;
+}
+.profile-container .info {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .5rem;
+}
+.profile-container .info img {
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--color-dark-medium);
+}
+
+
+/* CHAT */
+/* Chat room */
+.chat-container {
+    width: 100%;
+    max-width: 450px; /* Ancho máximo */
+    height: 600px; /* Alto fijo */
+    background-color: #1e2732; /* Fondo oscuro */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Sombra */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Evita que el contenido se salga */
+    color: #e5e7eb; /* Color de texto claro por defecto */
+}
+
+.chat-header {
+    background-color: #242f3d; /* Fondo ligeramente más claro */
+    padding: 15px;
+    border-bottom: 1px solid #2f3b4a; /* Línea divisoria */
+    flex-shrink: 0; /* No se encoge */
+}
+
+.chat-header .online-counter {
+    display: flex;
+    align-items: center;
+}
+
+.chat-header .user-info {
+    margin-right: auto; /* Empuja el resto a la derecha */
+}
+
+.chat-header .user-name {
+    font-weight: 600;
+    color: #ffffff; /* Nombre en blanco */
+    font-size: 14px;
+}
+
+.chat-header .online-counter a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #9ca3af; /* Color grisáceo */
+    font-size: 12px;
+}
+
+.chat-header .online-counter img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; /* Círculo */
+    object-fit: cover;
+    margin-right: 8px; /* Espacio entre imagen y @usuario */
+}
+
+.gray-dot {
+    width: 10px;
+    height: 10px;
+    background-color: #6b7280; /* Gris por defecto */
+    border-radius: 50%;
+    margin: 0 8px; /* Espacio a los lados */
+}
+
+.green-dot {
+    width: 10px;
+    height: 10px;
+    background-color: #10b981; /* Verde */
+    border-radius: 50%;
+    margin: 0 8px; /* Espacio a los lados */
+}
+
+.chat-box {
+    flex-grow: 1; /* Ocupa el espacio restante */
+    padding: 15px;
+    overflow-y: auto; /* Scroll si es necesario */
+    display: flex;
+    flex-direction: column; /* Mensajes nuevos abajo */
+}
+
+.chat-box::-webkit-scrollbar { width: 5px; }
+.chat-box::-webkit-scrollbar-track { background: #1e2732; }
+.chat-box::-webkit-scrollbar-thumb { background-color: #4a5c6e; border-radius: 3px; }
+.chat-box { scrollbar-width: thin; scrollbar-color: #4a5c6e #1e2732; }
+
+.message-container {
+    /* display: flex; Ya no es necesario flex aquí, se maneja con align-self */
+    margin-bottom: 10px; /* Espacio entre mensajes */
+    max-width: 75%; /* Ancho máximo de burbuja */
+}
+.message-container.from-user {
+    align-self: flex-end; /* Alinea todo el contenedor a la derecha */
+}
+.message-container.from-other {
+    align-self: flex-start; /* Alinea todo el contenedor a la izquierda */
+}
+
+.message-sender-name {
+    font-size: 12px;
+    font-weight: 500;
+    color: #9ca3af; /* Color grisáceo */
+    margin-bottom: 3px; /* Pequeño espacio antes de la burbuja */
+    padding-left: 5px; /* Ligera indentación */
+}
+
+.message-bubble {
+    padding: 8px 12px; /* Ajusta padding para timestamp */
+    padding-bottom: 20px; /* Más espacio abajo para el timestamp */
+    border-radius: 18px; /* Bordes redondeados */
+    font-size: 14px;
+    line-height: 1.4;
+    word-wrap: break-word; /* Evita desbordamiento de texto */
+    position: relative; /* Necesario para posicionar el timestamp */
+    min-width: 80px; /* Ancho mínimo para que quepa el timestamp */
+}
+.message-bubble.from-user {
+    background-color: #a0e75a; /* Verde */
+    color: #1f2937; /* Texto oscuro */
+    border-bottom-right-radius: 5px; /* Esquina menos redonda */
+}
+.message-bubble.from-other {
+    background-color: #3a4d5f; /* Gris/Azul */
+    color: #e5e7eb; /* Texto claro */
+    border-bottom-left-radius: 5px; /* Esquina menos redonda */
+}
+
+.message-timestamp {
+    position: absolute; /* Posicionamiento absoluto relativo a la burbuja */
+    bottom: 4px; /* Espacio desde abajo */
+    right: 10px; /* Espacio desde la derecha */
+    font-size: 10px; /* Tamaño pequeño */
+    color: #6b7280; /* Color gris */
+}
+.message-bubble.outgoing .message-timestamp {
+    color: #5a7f2e; /* Color más oscuro para burbuja verde */
+}
+
+.input-area {
+    background-color: #242f3d; /* Mismo fondo que cabecera */
+    padding: 15px;
+    border-top: 1px solid #2f3b4a; /* Línea divisoria */
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espacio entre input y botón */
+    flex-shrink: 0; /* No se encoge */
+}
+
+.input-area input[type="text"],
+.input-area textarea {
+    flex-grow: 1; /* Ocupa espacio */
+    padding: 8px 15px;
+    background-color: #ffffff; /* Fondo blanco */
+    border: 1px solid #d1d5db; /* Borde gris */
+    border-radius: 20px; /* Redondeado */
+    font-size: 14px;
+    color: #1f2937; /* Texto oscuro */
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif; /* Hereda fuente */
+}
+.input-area input[type="text"]:focus,
+.input-area textarea:focus {
+    outline: none;
+    border-color: #3b82f6; /* Borde azul al enfocar */
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3); /* Sombra suave al enfocar */
+}
+.input-area input[type="text"]::placeholder,
+.input-area textarea::placeholder {
+    color: #6b7280; /* Color del placeholder */
+}
+
+#chat-message-submit {
+    padding: 8px 15px;
+    background-color: #3b82f6; /* Azul */
+    color: white;
+    border: none;
+    border-radius: 20px; /* Redondeado */
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+#chat-message-submit:hover {
+    background-color: #2563eb; /* Azul más oscuro */
+}
+
+/* Edit Chatroom */
+.edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    max-width: 400px;
+    margin: auto;
+}
+
+.members-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.member {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.member-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.username {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.remove-checkbox {
+    margin-left: auto;
+}
+
+.update-btn {
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.update-btn:hover {
+    background-color: #0056b3;
+}

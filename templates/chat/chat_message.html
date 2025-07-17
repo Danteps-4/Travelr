@@ -1,0 +1,16 @@
+{% if user == message.author %}
+    <div class="message-container from-user">
+        <div class="message-bubble from-user">
+            {{ message.body }}
+            {% comment %} <span class="message-timestamp">{{ message.created|date"H:i" }}</span> {% endcomment %}
+        </div>
+    </div>
+{% else %}
+    <div class="message-container from-other">
+        <div class="message-sender-name">{{message.author.username}}</div>
+        <div class="message-bubble from-other">
+            {{message.body}}
+            {% comment %} <span class="message-timestamp">{{ message.created|date"H:i" }}</span> {% endcomment %}
+        </div>
+    </div>
+{% endif %}

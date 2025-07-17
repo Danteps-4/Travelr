@@ -1,0 +1,46 @@
+{% extends 'main.html' %}
+
+{% block title %} {{title}} {% endblock %}
+
+{% block content %}
+
+<form class="form-box" action="" method="POST">
+    {% csrf_token %}
+    <div class="form-header">
+        <header>{{title}}</header>
+    </div>
+    {% for field in form %}
+        <div class="input-box">
+            {{field}}
+        </div>
+    {% endfor %}
+    {% if title == "Login" %}
+        <div class="forgot">
+            <section>
+                <input type="checkbox" id="check">
+                <label for="check">Remember me</label>
+            </section>
+            <section>
+                <a href="">Forgot password</a>
+            </section>
+        </div>
+    {% endif %}
+    {% if messages %}
+        {% for message in messages %}
+            <div {% if message.tags %}class="{{message.tags}}" {% endif %}>{{message}}</div>
+        {% endfor %}
+    {% endif %}
+    <div class="input-submit">
+        <button class="submit-btn" id="submit"></button>
+        <label for="submit">{{title}}</label>
+    </div>
+    <div class="login-signup-link">
+        {% if title == "Login" %}
+            <p>Do not have an account? <a href="">SignUp</a></p>
+        {% else %}
+            <p>Do already have an account? <a href="">Login</a></p>
+        {% endif %}
+    </div>
+</form>
+
+{% endblock %}

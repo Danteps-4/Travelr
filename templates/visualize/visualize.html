@@ -1,0 +1,17 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block title %} Visualize {% endblock %}
+
+{% block content %}
+<h2>Visualize</h2>
+
+<div id="visualize-map">
+    {{countries|json_script:"countries"}}
+</div>
+
+<script>
+    var geojson_url = "{% static '/js/map.geojson' %}";
+</script>
+
+{% endblock %}

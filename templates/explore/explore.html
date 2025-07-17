@@ -1,0 +1,30 @@
+{% extends 'main.html' %}
+
+{% block title %} Explore {% endblock %}
+
+{% block content %}
+
+<div>
+    <div>
+        <h2 class="text-center">Explore</h2>
+        {% for continent in continents %}
+            <h3>{{continent}}</h3>
+            <div class="wrapper">
+            {% for country in countries %}
+                {% if continent in country.continents %}
+                <div class="item">
+                    <a href="{% url 'explore:country' country.name.common %}">
+                        <div class="image-container">
+                            <img src="{{country.flags.svg}}" alt="{{country.name.common}}">
+                        </div>
+                        <p>{{country.name.common}}</p>
+                    </a>
+                </div>
+                {% endif %}
+            {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

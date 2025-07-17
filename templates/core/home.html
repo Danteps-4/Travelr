@@ -1,0 +1,15 @@
+{% extends 'main.html' %}
+
+{% block title %}Travelr{% endblock %}
+
+{% block content %}
+<div class="home">
+    <h1>Travelr</h1>
+    <div class="text">
+    <p>Let's track all your trips and places you been</p>
+    {% if not request.user.is_authenticated %}
+    <p><a href="{% url 'account:login' %}">Login</a> or <a href="{% url 'account:sign_up' %}">Sign up</a> to start your journey</p>
+    <div>
+</div>
+{% endif %}
+{% endblock %}

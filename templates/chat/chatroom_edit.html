@@ -1,0 +1,30 @@
+{% extends 'main.html' %}
+
+{% block title %} Edit {% endblock %}
+
+{% block content %}
+<h2 class="title">Edit Chatroom</h2>
+<form action="" method="POST" class="edit-form">
+    {% csrf_token %}
+    {{form}}
+
+    <div class="members-list">
+        {% for member in chat_group.members.all %}
+            <div class="member">
+                <div class="member-info">
+                    <img class="avatar" src="{{member.profile.avatar.url}}" alt="{{member.username}}">
+                    <span class="username">@{{member.username}}</span>
+                </div>
+                {% if member != chat_group.admin %}
+                    <div class="remove-checkbox">
+                        <input type="checkbox" name="remove_members" value="{{member.id}}">
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+
+    <button type="submit" class="update-btn">Update</button>
+    <a href="{% url 'chat:delete_chatroom' chat_group.name %}" class="btn btn-round btn-danger">Delete chatroom</a>
+</form>
+{% endblock %}

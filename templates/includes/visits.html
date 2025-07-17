@@ -1,0 +1,31 @@
+<h2>Visits</h2>
+{% if visits %}
+{% for visit in visits %}
+<div class="visit-card">
+    {% for country in countries %}
+    {% if visit.country == country.name.common %}
+    <div class="top-section">
+        <h3><a href="{% url 'explore:country' visit.country %}">{{visit.country}}</a></h3>
+        <div class="btns">
+            {% if request.user == profile.user %}
+            <a href="{% url 'core:visit_edit' visit.slug %}" class="btn-info btn-round">Edit</a>
+            <a href="{% url 'core:visit_delete' visit.slug %}" class="btn-danger btn-round">Delete</a>
+            {% endif %}
+        </div>
+    </div>
+    <div class="dates">
+        <p>Date from: {{visit.date_from}}</p>
+        <p>Date until: {{visit.date_until}}</p>
+    </div>
+    {% endif %}
+    {% endfor %}
+    
+</div>
+{% endfor %}
+{% if visits.count > 2 %}
+<a href="" class="btn btn-round btn-info">Load more</a>
+{% endif %}
+
+{% else %}
+<p>There are no visits. <a href="{% url 'explore:explore' %}">Add</a> some</p>
+{% endif %}

@@ -1,0 +1,15 @@
+{% extends 'main.html' %}
+
+{% block title %} Edit {% endblock %}
+
+{% block content %}
+<h2 class="title">Delete Chatroom:</h2>
+<h3>"{{chat_group.groupchat_name}}"</h3>
+
+<form action="" method="POST">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-round btn-danger">Delete</button>
+    <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-round btn-main">Cancel</a>
+</form>
+
+{% endblock %}

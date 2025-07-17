@@ -1,0 +1,7 @@
+<span span id="online-count" hx-swap-oob="outerHTML">{{online_count}}</span>
+
+{% if online_count %}
+<div class="green-dot" id="online-icon"></div>
+{% else%}
+<div class="gray-dot" id="online-icon"></div>
+{% endif %}

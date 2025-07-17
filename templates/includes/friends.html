@@ -1,0 +1,15 @@
+<h2>Friends</h2>
+{% if friends %}
+
+{% for friend in friends %}
+<div>
+    <a href="{% url 'account:profile_view' friend.profile.slug %}"><p>@{{friend.username}}</p></a>
+    {% if request.user != friend %}
+    <a href="{% url 'chat:chat_user' friend.profile.slug %}" class="btn btn-main btn-round">Chat</a>
+    {% endif %}
+</div>
+{% endfor %}
+
+{% else %}
+<p>There are no friends. Add some</p>
+{% endif %}

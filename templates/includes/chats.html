@@ -1,0 +1,22 @@
+<h2>Your chats</h2>
+{% if your_chats %}
+
+{% for chat in your_chats %}
+    {% if chat.is_private %}
+        {% for member in chat.members.all %}
+            {% if member != profile.user %}
+            <div>
+                <a href="{% url 'chat:chatroom' chat.name %}" class="btn btn-round btn-main">{{member.username}}</a>
+            </div>
+            {% endif %}
+        {% endfor %}
+    {% else %}
+        <div>
+            <a href="{% url 'chat:chatroom' chat.name %}" class="btn btn-round btn-main">{{chat.groupchat_name}}</a>
+        </div>
+    {% endif %}
+{% endfor %}
+
+{% else %}
+<p>There are no chats. Start one</p>
+{% endif %}

@@ -1,0 +1,13 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<div>
+    <h3>Add a visit</h3>
+    <p>You are adding a visit to <strong>{{country.name.common}}</strong></p>
+    <form method="POST" action="">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit">Add</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'main.html' %}
+
+{% block title %} {{country.name.common}} {% endblock %}
+
+{% block content %}
+
+<div class="country-container">
+  <div class="name">
+      <h2>{{country.name.common}}</h2>
+      <div>
+        <a class="btn btn-main" href="{% url 'core:visit_country_add' country.name.common %}">Add visit +</a>
+      </div>
+  </div>
+  <div class="content">
+    <img src="{{country.flags.svg}}" alt="{{country.name.common}}">
+    <div class="info">
+      {% for continent in country.continents %}
+          <p>Continent: {{continent}}</p>
+      {% endfor %}
+      <p> Capital: 
+      {% for capital in country.capital %}
+          {{capital}}
+      {% endfor %}
+    </p>
+      <p>Population: {{country.population}}</p>
+      <p>Area: {{country.area}} km2</p>
+      <p>Currency: 
+      {% for code, currency in country.currencies.items %}
+          {{currency.name}} - {{currency.symbol}}
+      {% endfor %}
+      </p>
+    </div>
+  </div>
+
+  <div id="country-map">
+    {{ country|json_script:"latlng_country"}}
+  </div>
+</div>
+
+<!-- Open the modal using ID.showModal() method -->
+{% comment %} <dialog id="add_visit_modal" class="modal">
+  <div class="modal-box" id="inner_modal">
+    <h3 class="text-lg font-bold">Loading...</h3>
+  </div>
+  <form method="dialog" class="modal-backdrop">
+    <button>close</button>
+  </form>
+</dialog> {% endcomment %}
+
+
+
+{% endblock %}

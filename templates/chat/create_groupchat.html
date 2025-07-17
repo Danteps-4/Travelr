@@ -1,0 +1,12 @@
+{% extends 'main.html' %}
+
+{% block title %}Create group chat {% endblock %}
+
+{% block content %}
+<h2>Create group chat</h2>
+<form action="" method="POST">
+    {% csrf_token %}
+    {{form}}
+    <button type="submit" class="btn btn-round btn-success">Create group chat</button>
+</form>
+{% endblock %}
